@@ -32,6 +32,7 @@ end
 
 	
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
 !!!@@DHCP
 
 config t
@@ -52,21 +53,23 @@ ip dhcp pool WIFIDATA
    dns-server 10._.1.10
 end
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 @!!ANALOG PHONE
+
 configure terminal
 dial-peer voice 1 pots
-   destination-pattern 8001111
+   destination-pattern 81111
    port 0/0/0
 dial-peer voice 2 pots
-   destination-pattern 8002222
+   destination-pattern 82222
    port 0/0/1
 end
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+@@@!!IP telephony
 
-@@@
-!!IP telephony
 config t
 no telephony-service
 telephony-service
@@ -108,7 +111,7 @@ Ephone 2
   restart  
 end
 
-
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 @@@Enabling Video Calls
 configure terminal
@@ -124,9 +127,9 @@ ephone 2
    call start slow
 end
 
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-
-IVRS:
+!IVRS:
 
 config t
 dial-peer voice 69 voip
@@ -168,6 +171,7 @@ application
 end
 
 ***********************************************************
+
 
 show call application sessions
 call application session stop id 17
