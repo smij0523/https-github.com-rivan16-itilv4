@@ -1,5 +1,5 @@
 config t
-   hostname CUCM-_
+   hostname CUCM-22
    enable secret pass
    service password-encryption
    no logging console
@@ -13,17 +13,27 @@ config t
    login local
 Int Vlan 1
      no shutdown
-	 ip add 10._.1.8 255.255.255.0
+	 ip add 10.22.1.8 255.255.255.0
 	 description MGMTDATA
 Int Vlan 10
      no shutdown
-	 ip add 10._.10.8 255.255.255.0
+	 ip add 10.22.10.8 255.255.255.0
 	 description WIRELESS
 	end
 Conf t
-Int Fa 0/1/4
+vlan 10 
+NAME WIFI
+VLAN 100 
+NAME VOICE
+Int Fa 0/1/2
   switchport mode access
   switchport access vlan 10
+Int Fa 0/1/4
+  switchport mode access
+  switchport access vlan 100
+Int Fa 0/1/5
+  switchport mode access
+  switchport access vlan 100
 Int Fa 0/1/0
   switchport mode access
   switchport access vlan 1
